@@ -1,5 +1,6 @@
 using System;
 using System.Linq;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using ParkingAPI.Models;
 
@@ -58,6 +59,7 @@ namespace ParkingAPI.Controllers
         }
 
         [HttpDelete("{id}")]
+        [Authorize]
         public IActionResult DeleteParkingById([FromRoute]int id){
            var parking = _context.parkings.Where(parking=>parking.id==id).FirstOrDefault();
            if (parking != null){
