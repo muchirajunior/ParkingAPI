@@ -6,5 +6,6 @@ namespace ParkingAPI {
         public DatabaseContext (DbContextOptions<DatabaseContext> options) : base (options) { }
         public DbSet<User> users { get; set; }
         public DbSet<Parking> parkings { get; set; }
+        public DbSet<Booking> bookings { get; set; }
     }
 }
