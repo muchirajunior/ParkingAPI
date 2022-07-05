@@ -90,16 +90,26 @@
 		{
 			"name": "delete a parking slot",
 			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJqdGkiOiI1MGVjYjBkMy0wOTQwLTRjMDYtOTBmNi05MDcwYTc2ZGM3ZTYiLCJuYW1lIjoiam9obiBtdWNoaXJhIiwidXNlcm5hbWUiOiJqdW5pb3IiLCJSb2xlcyI6InVzZXIiLCJleHAiOjE2NTcwNjA2MzYsImlzcyI6IlBhcmtpbmdBUEkifQ.abx28b5JGsnz79A_9k3_7Q14-FrTV8oSGKhae1f8ANo",
+							"type": "string"
+						}
+					]
+				},
 				"method": "DELETE",
 				"header": [],
 				"url": {
-					"raw": "{{url}}/parking/6",
+					"raw": "{{url}}/parking/4",
 					"host": [
 						"{{url}}"
 					],
 					"path": [
 						"parking",
-						"6"
+						"4"
 					]
 				}
 			},
@@ -171,13 +181,7 @@
 			"name": "add new booking",
 			"request": {
 				"method": "POST",
-				"header": [
-					{
-						"key": "Content-Type",
-						"value": "application/json",
-						"type": "text"
-					}
-				],
+				"header": [],
 				"body": {
 					"mode": "raw",
 					"raw": "{\n    \"parking_id\":1,\n    \"customer_id\":1,\n    \"vehicle_no\":\"abc 888\",\n    \"booking_date\":\"11/7/2022\",\n    \"entry_time\":\"11:40\",\n    \"leave_time\":\"14:00\",\n    \"slot\":3,\n    \"price\":750\n}",
@@ -216,8 +220,130 @@
 				}
 			},
 			"response": []
+		},
+		{
+			"name": "register user",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\":\"john muchira\",\n    \"username\":\"junior\",\n    \"password\":\"jn12\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/user",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"user"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "login user",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"username\":\"junior\",\n    \"password\":\"jn12\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/user",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"user"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "login user",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"username\":\"junior\",\n    \"password\":\"jn12\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/user",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"user"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Date",
+							"value": "Tue, 05 Jul 2022 18:25:12 GMT"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Server",
+							"value": "Kestrel"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"message\": \"successful login\",\n    \"data\": {\n        \"id\": 1,\n        \"name\": \"john muchira\",\n        \"username\": \"junior\",\n        \"password\": \"AQAAAAEAACcQAAAAEC81zfArp9aQSfpBT05yff6ejrWr3kz5yJPO/NbSdJsvRII/PiI+uDdm9KVXDoGlsQ==\"\n    },\n    \"token\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJqdGkiOiIxMGM0NGZjOC01ZmMyLTQxYzYtOTdjMC1jOWE5N2RkYzVlY2QiLCJuYW1lIjoiam9obiBtdWNoaXJhIiwidXNlcm5hbWUiOiJqdW5pb3IiLCJSb2xlcyI6InVzZXIiLCJleHAiOjE2NTcwNTk5MTIsImlzcyI6IlBhcmtpbmdBUEkifQ.bGkkuq9Yyul2geHuE3MY57T8G9v75ZUjsOMWEZkm9ig\"\n}"
+				}
+			]
+		},
+		{
+			"name": "delete booking",
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": []
 		}
 	],
+	"auth": {
+		"type": "bearer",
+		"bearer": [
+			{
+				"key": "token",
+				"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJqdGkiOiJhYTJlZDkxZi03NmMzLTRiMWEtYTE4Yy05YjBiYWZjMTAxODkiLCJuYW1lIjoiam9obiBtdWNoaXJhIiwidXNlcm5hbWUiOiJqdW5pb3IiLCJSb2xlcyI6InVzZXIiLCJleHAiOjE2NTcwNjE5NjEsImlzcyI6IlBhcmtpbmdBUEkifQ.eQvJcWeTAWnDlthfcI6oV9_ESev2RtB25E31FFb-lOM",
+				"type": "string"
+			}
+		]
+	},
 	"event": [
 		{
 			"listen": "prerequest",
@@ -241,7 +367,7 @@
 	"variable": [
 		{
 			"key": "url",
-			"value": "http://localhost:5001/",
+			"value": "https://localhost:5001",
 			"type": "string"
 		}
 	]
