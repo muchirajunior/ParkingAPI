@@ -5,7 +5,6 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
-using Swashbuckle.AspNetCore.Swagger;
 
 namespace ParkingAPI
 {
@@ -24,11 +23,12 @@ namespace ParkingAPI
             // using Microsoft.EntityFrameworkCore;
             services.AddDbContext<DatabaseContext>(options =>
                 options.UseNpgsql(Configuration.GetConnectionString("DatabaseConnection")));
-            
+
             services.AddControllers();
-           services.AddSwaggerGen(c=>{
-               c.SwaggerDoc("v1",new OpenApiInfo {Title="ParkingAPI", Version="v1"});
-           });
+            services.AddSwaggerGen(c =>
+            {
+                c.SwaggerDoc("v1", new OpenApiInfo { Title = "ParkingAPI", Version = "v1" });
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -37,8 +37,8 @@ namespace ParkingAPI
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
-                 app.UseSwagger();
-                app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "ParkingAPi v1"));
+                app.UseSwagger();
+                app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "ParkingAPI v1"));
             }
 
             app.UseHttpsRedirection();
