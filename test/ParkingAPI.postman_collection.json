@@ -1,0 +1,248 @@
+{
+	"info": {
+		"_postman_id": "a99dc0b6-64a6-470c-a246-641cda3903d6",
+		"name": "ParkingAPI",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "17338944"
+	},
+	"item": [
+		{
+			"name": "health check",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{url}}",
+					"host": [
+						"{{url}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Add Parking",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\":\"Parking slot\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/parking",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"parking"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get all pparking",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{url}}/parking",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"parking"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get parking by id",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{url}}/parking/7",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"parking",
+						"7"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "delete a parking slot",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{url}}/parking/6",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"parking",
+						"6"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "update a parking",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n     \"name\": \"Parking Outer\",\n       \"active\": false\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/parking/2",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"parking",
+						"2"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "all booking",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{url}}/booking",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"booking"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get parking by id",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{url}}/booking/1",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"booking",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "add new booking",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"parking_id\":1,\n    \"customer_id\":1,\n    \"vehicle_no\":\"abc 888\",\n    \"booking_date\":\"11/7/2022\",\n    \"entry_time\":\"11:40\",\n    \"leave_time\":\"14:00\",\n    \"slot\":3,\n    \"price\":750\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/booking",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"booking"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "pay booking",
+			"request": {
+				"method": "PATCH",
+				"header": [],
+				"url": {
+					"raw": "{{url}}/booking/1",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"booking",
+						"1"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "url",
+			"value": "http://localhost:5001/",
+			"type": "string"
+		}
+	]
+}
